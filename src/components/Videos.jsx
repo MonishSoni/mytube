@@ -2,10 +2,10 @@ import React from "react";
 import { Stack, Box } from "@mui/material";
 import { Videocard, Channelcard } from "./";
 
-const Videos = ({ video }) => {
+const Videos = ({ video, direction }) => {
   return (
     <Stack
-      direction="row"
+      direction={ direction || "row" }
       flexWrap="wrap"
       justifyContent="start"
       gap={2}
@@ -14,7 +14,7 @@ const Videos = ({ video }) => {
       {video.map((item, i) => (
         <Box key={i}>
           {item.id.videoId && <Videocard video={item} />}
-          {item.id.channelId && <Channelcard channel={item}/>}
+          {item.id.channelId && <Channelcard channel={item} />}
         </Box>
       ))}
     </Stack>
