@@ -36,8 +36,8 @@ const Feed = () => {
 
         <Typography className='copyright'
           variant='body2'
-          sx={{ mt: '1.5', color: '#fff' }}
-        >Copyright 2022 Mytube
+          sx={{ mt: '5px', color: '#fff',fontSize:'13px' }}
+        >Copyright &copy; 2022 Mytube
         </Typography>
       </Box>
 
