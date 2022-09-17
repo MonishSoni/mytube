@@ -87,5 +87,10 @@ a {
   
   .search-bar{
     width:200px;
+
+  }
+
+  .marb{
+    margin-bottom: 5px ;
   }
 }

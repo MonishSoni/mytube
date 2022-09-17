@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography,Divider } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
-
 
 import { Videos } from "./";
 import { fetchApi } from "../utils/fetchApi";
 import DownloadButton from "./DownloadButton";
+import Downloadmp3 from "./Downloadmp3";
 
 const Videodetail = () => {
   const [videod, setVideod] = useState("demo");
@@ -35,7 +35,7 @@ const Videodetail = () => {
   return (
     <>
       <Box minHeight="95vh" paddingBottom="20px !important">
-        <Stack direction={{ xs: "column", md: "row" }}>
+        <Stack direction={{ xs: "column", md: "column" }}>
           <Box flex={1}>
             <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
               <ReactPlayer
@@ -51,12 +51,14 @@ const Videodetail = () => {
               <Stack
                 direction="row"
                 justifyContent="space-between"
+                flexWrap="wrap"
                 sx={{ color: "#fff" }}
                 py={1}
                 px={2}
               >
-                <Link to={`/channel/${channelId}`}>
+                <Link to={`/channel/${channelId}`} className="marb">
                   <Typography
+                    
                     variant={{ sm: "subtitle1", md: "h6" }}
                     color="#fff"
                   >
@@ -67,32 +69,32 @@ const Videodetail = () => {
                   </Typography>
                 </Link>
 
-                <Stack direction="row" gap="20px" alignItems="center">
+                <Stack  direction="row" gap="10px" alignItems="center">
                   <Typography variant="body1" sx={{ opacity: "0.7" }}>
                     {parseInt(viewCount).toLocaleString()} views
                   </Typography>
+
                   <Typography variant="body1" sx={{ opacity: "0.7" }}>
                     {parseInt(likeCount).toLocaleString()} likes
                   </Typography>
-                  
                 </Stack>
-                
               </Stack>
 
               <Box p={2}>
-              <DownloadButton videoid={id} />
+                <DownloadButton videoid={id} />
+                <Downloadmp3 videoid={id} />
               </Box>
-              
+             
             </Box>
           </Box>
-
+             
           <Box
-            px={2}
-            py={{ md: 1, xs: 5 }}
+            px={6} 
+            py={{ md: 4, xs: 6 }}
             justifyContent="center"
             alignItems="center"
           >
-            <Videos video={relatedvideo} direction="column" />
+            <Videos video={relatedvideo} direction="row" />
           </Box>
         </Stack>
       </Box>

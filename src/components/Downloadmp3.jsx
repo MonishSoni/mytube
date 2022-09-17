@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Typography } from "@mui/material";
+import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import IconButton from "@mui/material/IconButton";
-import VideocamIcon from '@mui/icons-material/Videocam';
 
-const DownloadButton = ({ videoid }) => {
-  const [vlink, setVlink] = useState(null);
+const Downloadmp3 = ({ videoid }) => {
+  const [mlink, setMlink] = useState(null);
 
   const options = {
     method: "GET",
-    url: "https://youtube-video-download-info.p.rapidapi.com/dl",
+    url: "https://youtube-mp3-download1.p.rapidapi.com/dl",
     params: { id: videoid },
     headers: {
-      "X-RapidAPI-Key": "f1f0359536mshd60d3e0825ca126p12e407jsn9d2d2c18f0bd",
-      "X-RapidAPI-Host": "youtube-video-download-info.p.rapidapi.com",
+      "X-RapidAPI-Key": "5bf61050a3mshe9307bcc3d55f3dp12dc70jsn1c42766bba10",
+      "X-RapidAPI-Host": "youtube-mp3-download1.p.rapidapi.com",
     },
   };
 
   useEffect(() => {
     axios.request(options).then(function (response) {
-      setVlink(response.data.link[22][0]);
+      setMlink(response.data.link);
+      
     });
   }, [videoid]);
 
@@ -27,9 +28,9 @@ const DownloadButton = ({ videoid }) => {
     <Typography
       variant="subtitle2"
       fontWeight="bold"
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", marginTop: "15px" }}
     >
-      <a target="_blank" style={{ color: "#fff" }} download="" href={vlink}>
+      <a target="_blank" style={{ color: "#fff" }} download="" href={mlink}>
         <IconButton
           size="small"
           sx={{
@@ -43,13 +44,12 @@ const DownloadButton = ({ videoid }) => {
             fontWeight: "bold",
           }}
         >
-          <VideocamIcon sx={{marginRight:"10px"}}/>
-          Download MP4
-          
+          <AudiotrackIcon sx={{ marginRight: "10px" }} />
+          Download MP3
         </IconButton>
       </a>
     </Typography>
   );
 };
 
-export default DownloadButton;
+export default Downloadmp3;

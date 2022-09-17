@@ -74,7 +74,6 @@ const Videocard = ({
               />
             </Typography>
           </Link>
-          
         </Stack>
       </CardContent>
     </Card>
