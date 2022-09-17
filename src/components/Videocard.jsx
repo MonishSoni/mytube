@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Typography, Card, CardContent, CardMedia } from "@mui/material";
+import { Typography, Card, CardContent, CardMedia, Stack } from "@mui/material";
 import { Check, CheckCircle } from "@mui/icons-material";
 
 import {
@@ -58,18 +58,24 @@ const Videocard = ({
             {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
           </Typography>
         </Link>
-        <Link
-          to={
-            snippet?.channelId
-              ? `/channel/${snippet?.channelId}`
-              : demoChannelUrl
-          }
-        >
-          <Typography variant="subtitle2" fontWeight="bold" color="gray">
-            {snippet?.channelTitle || demoChannelTitle}
-            <CheckCircle sx={{ fontSize: "14px", color: "gray", ml: "5px" }} />
-          </Typography>
-        </Link>
+
+        <Stack direction="row" justifyContent="space-between">
+          <Link
+            to={
+              snippet?.channelId
+                ? `/channel/${snippet?.channelId}`
+                : demoChannelUrl
+            }
+          >
+            <Typography variant="subtitle2" fontWeight="bold" color="gray">
+              {snippet?.channelTitle || demoChannelTitle}
+              <CheckCircle
+                sx={{ fontSize: "14px", color: "gray", ml: "5px" }}
+              />
+            </Typography>
+          </Link>
+          
+        </Stack>
       </CardContent>
     </Card>
   );

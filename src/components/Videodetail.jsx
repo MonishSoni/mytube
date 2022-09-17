@@ -4,8 +4,10 @@ import ReactPlayer from "react-player";
 import { Box, Stack, Typography } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 
+
 import { Videos } from "./";
 import { fetchApi } from "../utils/fetchApi";
+import DownloadButton from "./DownloadButton";
 
 const Videodetail = () => {
   const [videod, setVideod] = useState("demo");
@@ -22,7 +24,6 @@ const Videodetail = () => {
     );
   }, [id]);
 
-  console.log(relatedvideo);
   if (!videod?.snippet) return "Loading...";
   if (!relatedvideo) return "Loading...";
 
@@ -73,8 +74,15 @@ const Videodetail = () => {
                   <Typography variant="body1" sx={{ opacity: "0.7" }}>
                     {parseInt(likeCount).toLocaleString()} likes
                   </Typography>
+                  
                 </Stack>
+                
               </Stack>
+
+              <Box p={2}>
+              <DownloadButton videoid={id} />
+              </Box>
+              
             </Box>
           </Box>
 
