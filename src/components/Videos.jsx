@@ -9,7 +9,7 @@ const Videos = ({ video, direction }) => {
       flexWrap="wrap"
       justifyContent="start"
       gap={2}
-      sx={{ justifyContent: { md: "space-evenly", xs: "center" } }}
+      sx={{ justifyContent: { md: "start", xs: "center" } }}
     >
       {video.map((item, i) => (
         <Box key={i}>
